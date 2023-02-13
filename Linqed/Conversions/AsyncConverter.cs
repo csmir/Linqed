@@ -1,7 +1,14 @@
 ﻿namespace Linqed
 {
-    public static class AsyncConversion
+    public static class AsyncConverter
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="items"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public static async Task<List<T>> ToListAsync<T>(this IAsyncEnumerable<T> items, CancellationToken cancellationToken = default)
         {
             var results = new List<T>();

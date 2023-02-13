@@ -1,4 +1,6 @@
-﻿namespace Linqed
+﻿using System.Collections.Immutable;
+
+namespace Linqed
 {
     public static class OpForEach
     {
