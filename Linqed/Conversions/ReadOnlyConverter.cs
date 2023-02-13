@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace Linqed
 {
-    public static class ReadOnlyConversion
+    public static class ReadOnlyConverter
     {
         /// <summary>
         /// 
@@ -25,13 +25,7 @@ namespace Linqed
         /// <returns></returns>
         public static IReadOnlyDictionary<TKey, TValue> AsTrueReadOnly<TKey, TValue>(this IDictionary<TKey, TValue> dictionary)
             where TKey : notnull
-        {
-            var builder = ImmutableDictionary.CreateBuilder<TKey, TValue>();
-
-            builder.AddRange(dictionary);
-
-            return builder.ToImmutable();
-        }
+            => ImmutableDictionary.CreateRange(dictionary);
 
         /// <summary>
         /// 
@@ -61,14 +55,7 @@ namespace Linqed
         /// <param name="array"></param>
         /// <returns></returns>
         public static IReadOnlyCollection<T> AsTrueReadOnly<T>(this T[] array)
-        {
-            var builder = ImmutableArray.CreateBuilder<T>();
-
-            foreach (var item in array)
-                builder.Add(item);
-
-            return builder.ToImmutable();
-        }
+            => ImmutableArray.CreateRange(array);
 
         /// <summary>
         /// 
@@ -86,14 +73,7 @@ namespace Linqed
         /// <param name="list"></param>
         /// <returns></returns>
         public static IReadOnlyList<T> AsTrueReadOnly<T>(this IList<T> list)
-        {
-            var builder = ImmutableList.CreateBuilder<T>();
-
-            foreach (var item in list)
-                builder.Add(item);
-
-            return builder.ToImmutable();
-        }
+            => ImmutableList.CreateRange(list);
 
         /// <summary>
         /// 
@@ -111,14 +91,7 @@ namespace Linqed
         /// <param name="set"></param>
         /// <returns></returns>
         public static IReadOnlySet<T> AsTrueReadOnly<T>(this ISet<T> set)
-        {
-            var builder = ImmutableHashSet.CreateBuilder<T>();
-
-            foreach (var item in set)
-                builder.Add(item);
-
-            return builder.ToImmutable();
-        }
+            => ImmutableHashSet.CreateRange(set) ;
 
         /// <summary>
         /// 
